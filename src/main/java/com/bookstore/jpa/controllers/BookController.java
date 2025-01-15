@@ -20,6 +20,11 @@ public class BookController {
         this.bookService = bookService;
     }
 
+    @GetMapping
+    public ResponseEntity<List<BookModel>> getAllBooks() {
+        return ResponseEntity.status(HttpStatus.OK).body(bookService.getAllBooks());
+    }
+
     @PostMapping
     public ResponseEntity<BookModel> saveBook(@RequestBody BookRecordDto bookRecordDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(bookService.saveBook(bookRecordDto));
